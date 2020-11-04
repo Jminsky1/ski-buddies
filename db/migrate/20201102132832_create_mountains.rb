@@ -4,7 +4,7 @@ class CreateMountains < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :location, null: false
       t.integer :size, null: false
-      t.string :mountain_picture, null: false
+      t.string :mountain_picture
       
       t.timestamps
     end
