@@ -18,7 +18,10 @@ class Api::V1::MountainsController < ApiController
 
   def show
     mountain = Mountain.find(params[:id])
-    render json: mountain
+    render json: {
+      mountain: serialized_data(mountain, MountainSerializer),
+      comments: serialized_data(mountain.comments, CommentSerializer)
+    }
   end
 
 
@@ -31,5 +34,9 @@ class Api::V1::MountainsController < ApiController
       if !user_signed_in?
         render json: {error: ["You need to be signed in first"]} 
       end
+    end
+
+    def serialized_data(data, serializer)
+      ActiveModelSerializers::SerializableResource.new(data, each_serializer: serializer, scope: current_user)
     end
   end
