@@ -16,6 +16,11 @@ class Api::V1::MountainsController < ApiController
     end
   end
 
+  def show
+    mountain = Mountain.find(params[:id])
+    render json: mountain
+  end
+
 
   private
     def mountain_params

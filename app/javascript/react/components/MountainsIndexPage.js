@@ -25,7 +25,6 @@ const MountainsIndexPage = (props) => {
   }, [])
 
   let mountainListItems = mountains.map((mountain) => {
-    debugger
     let picture = <img className="picture" src={mountain.mountain_picture.url} alt="mountain picture" />
     
     return (
