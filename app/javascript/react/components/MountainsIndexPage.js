@@ -38,7 +38,7 @@ const MountainsIndexPage = (props) => {
 
   return (
     <div>
-    <div className="grid-x grid-margin-x">
+    <div className="clear grid-x grid-margin-x">
         {mountainListItems} 
     </div> 
     <div>

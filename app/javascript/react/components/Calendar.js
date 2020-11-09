@@ -6,7 +6,7 @@ function CalendarApp() {
   const [value, onChange] = useState(new Date());
  
   return (
-    <div>
+    <div className="calendar">
       <Calendar
         onChange={onChange}
         value={value}

@@ -95,7 +95,7 @@ const MountainShowContainer = (props) => {
         mountain_picture={mountain.mountain_picture}
       />
 
-      <h2 className ="calendar">Calendar For Ski Trips</h2>
+      <h2>Plan Ski Trips!</h2>
       <Calendar
       /> 
       <h2 className="comment-label-header">Comments:</h2>
