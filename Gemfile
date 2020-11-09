@@ -56,4 +56,3 @@ gem 'fog-aws'
 gem "carrierwave"
 gem 'mini_magick', '~> 4.3'
 gem 'active_model_serializers'
-gem 'event-calendar', :require => 'event_calendar'
