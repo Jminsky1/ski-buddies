@@ -19,7 +19,7 @@ const MountainShow = (props) => {
         </div>
         <div className="small-6 columns">
           {picture}
-        </div> 
+        </div>
       </div>
     </div>
   )
