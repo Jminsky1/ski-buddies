@@ -42,7 +42,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails', group: [:development, :test]
 gem 'jquery-rails'
-gem 'dotenv-rails', group: [:development, :test]
 gem 'rspec-rails', '3.8.2', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
@@ -57,3 +56,4 @@ gem 'fog-aws'
 gem "carrierwave"
 gem 'mini_magick', '~> 4.3'
 gem 'active_model_serializers'
+gem 'event-calendar', :require => 'event_calendar'
