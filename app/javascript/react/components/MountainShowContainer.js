@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react"
-import MountainShow from "./MountainShow"
-import _ from "lodash" 
-import CommentList from "./CommentList"
-import CommentErrorList from "./CommentErrorList"
-import CommentForm from "./CommentForm"
+import React, { useState, useEffect } from "react";
+import MountainShow from "./MountainShow";
+import _ from "lodash" ;
+import CommentList from "./CommentList";
+import CommentErrorList from "./CommentErrorList";
+import CommentForm from "./CommentForm";
+import Calendar from "./Calendar"
 
 const MountainShowContainer = (props) => {
   const [mountain, setMountain] = useState({})
@@ -83,7 +84,6 @@ const MountainShowContainer = (props) => {
     }
   }
   
-  
   return (
     <div>
       <MountainShow
@@ -94,7 +94,10 @@ const MountainShowContainer = (props) => {
         description={mountain.description}
         mountain_picture={mountain.mountain_picture}
       />
-       
+
+      <h2 className ="calendar">Calendar For Ski Trips</h2>
+      <Calendar
+      /> 
       <h2 className="comment-label-header">Comments:</h2>
       <CommentList
         mountainComments={comments}
