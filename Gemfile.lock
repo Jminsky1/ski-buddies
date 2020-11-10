@@ -90,7 +90,6 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.9.0)
-    event-calendar (2.3.3)
     excon (0.78.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
@@ -283,7 +282,6 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
-  event-calendar
   factory_bot
   fog-aws
   foundation-rails (~> 6.5)
