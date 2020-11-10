@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+@import'react-calendar/dist/Calendar.css';
+
+body{
+  background-color: transparent;
+}
 nav.top-bar{
   background-color:blue;
 }
@@ -39,12 +44,12 @@ div.tile{
 }
 h2.field{
  font-family: 'Raleway', sans-serif;
- color: #021147;
+ color: blue;
  margin-left: 80px;
 }
 h5.field{
  font-family: 'Raleway', sans-serif;
- color: #021147;
+ color: blue;
  margin-left: 80px;
 }
 
@@ -90,13 +95,7 @@ h2.small{
  background-color: transparent
 }
 
-.reviews{
-  font-family: 'Raleway', sans-serif;
-  color: #021147;
-  background-color: white;
-  text-align: center;
-  padding: 10px;
-}
+
 
 .header{
   font-family: 'Raleway', sans-serif;
@@ -104,13 +103,7 @@ h2.small{
 
 h2{
   font-family: 'Raleway', sans-serif;
-}
-
-.review-label-header{
-  color: #e90fec
-}
-.review-label{
-  color: #021147;
+  color: blue
 }
 
 img.picture{
@@ -135,6 +128,12 @@ form.new-comment-form{
   background-color: transparent;
 }
 
-li{
+.clear{
   background-color: transparent;
+}
+
+.calendar{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
