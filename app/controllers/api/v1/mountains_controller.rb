@@ -27,7 +27,7 @@ class Api::V1::MountainsController < ApiController
 
   private
     def mountain_params
-      params.require(:mountain).permit([:name, :location, :description, :size, :mountain_picture])
+      params.require(:mountain).permit([:name, :location, :description, :zip_code, :size, :mountain_picture])
     end
 
     def authenticate_user

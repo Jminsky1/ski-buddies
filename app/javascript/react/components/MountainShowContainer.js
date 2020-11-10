@@ -4,13 +4,25 @@ import _ from "lodash" ;
 import CommentList from "./CommentList";
 import CommentErrorList from "./CommentErrorList";
 import CommentForm from "./CommentForm";
-import Calendar from "./Calendar"
+import Calendar from "./Calendar";
+import OpenWeatherTile from "./OpenWeatherTile"
 
 const MountainShowContainer = (props) => {
   const [mountain, setMountain] = useState({})
   const [errors, setErrors] = useState({})
   const [error, setError] = useState(null)
   const [comments, setComments] = useState(null)
+  const [weather, setWeather] = useState({
+    name: '',
+    description: '',
+    icon: '',
+    conditions:  '',
+    currentTemp: '',
+    highTemp: '',
+    lowTemp: '',
+    wind: '',
+    date: ''
+  })
   const id = props.match.params.id 
 
   useEffect(() => {
@@ -27,8 +39,20 @@ const MountainShowContainer = (props) => {
       }
       })
       .then((responseBody) => {
+        debugger
         setMountain(responseBody.mountain)
         setComments(responseBody.comments)
+        setWeather({
+          name: responseBody.name,
+          description: responseBody.weather.description,
+          icon: responseBody.weather.icon,
+          conditions: responseBody.weather.conditions,
+          currentTemp: responseBody.weather.temp,
+          highTemp:responseBody.weather.high,
+          lowTemp: responseBody.weather.low,
+          wind: responseBody.weather.wind,
+          date: responseBody.weather.date
+        })
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -98,6 +122,12 @@ const MountainShowContainer = (props) => {
       <h2>Plan Ski Trips!</h2>
       <Calendar
       /> 
+       <div className='weather'>
+          < OpenWeatherTile
+            key={mountain.id}
+            weather={weather}
+          />
+        </div>
       <h2 className="comment-label-header">Comments:</h2>
       <CommentList
         mountainComments={comments}

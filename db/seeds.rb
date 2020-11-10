@@ -9,4 +9,4 @@
 MOUNTAIN_IMAGE1 = File.open(File.join(
   Rails.root, '/public/images_seed/jaypeakprofile2.jpg'
 ))
-mountain = Mountain.create!(name: 'Jay Peak', location: 'Vermont', size: 922, mountain_picture: MOUNTAIN_IMAGE1, description: "Awesome glades!")
+mountain = Mountain.create!(name: 'Jay Peak', location: 'Vermont', size: 922, zip_code: '05859', mountain_picture: MOUNTAIN_IMAGE1, description: "Awesome glades!")
