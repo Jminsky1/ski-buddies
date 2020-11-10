@@ -133,7 +133,19 @@ form.new-comment-form{
 }
 
 .calendar{
-  margin: auto;
+  margin-left: 500px;
+  margin-right: auto;
   width: 50%;
   padding: 10px;
 }
+
+.plan{
+  text-align: center;
+}
+
+div.weather{
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 10px;}

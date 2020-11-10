@@ -18,10 +18,11 @@ class Api::V1::MountainsController < ApiController
 
   def show
     mountain = Mountain.find(params[:id])
-    render json: {
-      mountain: serialized_data(mountain, MountainSerializer),
-      comments: serialized_data(mountain.comments, CommentSerializer)
-    }
+    render json: mountain, serializer: MountainShowSerializer
+    # render json: {
+    #   mountain: serialized_data(mountain, MountainSerializer),
+    #   comments: serialized_data(mountain.comments, CommentSerializer)
+    # }
   end
 
 
