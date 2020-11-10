@@ -12,6 +12,7 @@ const MountainsFormContainer = (props) => {
     location: "",
     size: "",
     description: "",
+    zip_code: "",
     image: ""
   })
   const [shouldRedirect, setShouldRedirect] = useState({
@@ -30,7 +31,7 @@ const MountainsFormContainer = (props) => {
 
   const validforSubmission = () => {
     let submittedErrors = {}
-    const requiredFields = ["name", "location", "size"]
+    const requiredFields = ["name", "location", "size", "zip_code"]
     requiredFields.forEach(field => {
       if (submittedMountain[field].trim() === "") {
         submittedErrors = {
@@ -57,6 +58,7 @@ const MountainsFormContainer = (props) => {
     mountain.append("mountain[location]", submittedMountain.location)
     mountain.append("mountain[size]", submittedMountain.size)
     mountain.append("mountain[description]", submittedMountain.description)
+    mountain.append("mountain[zip_code]", submittedMountain.zip_code)
     mountain.append("mountain[mountain_picture]", submittedMountain.image)
 
     if (validforSubmission()) {
@@ -72,7 +74,7 @@ const MountainsFormContainer = (props) => {
       .then(response => response.json())
       .then(body => {
         if (body.errors) {
-          const requiredFields = ["name", "location", "size"]
+          const requiredFields = ["name", "location", "size", "zip_code"]
           requiredFields.forEach(field => { 
             if (body.errors[field] !== undefined) {
               setErrors({
@@ -128,6 +130,17 @@ const MountainsFormContainer = (props) => {
               type="text"
               onChange={inputChangeHandler}
               value={submittedMountain.location}
+              />
+          </label>
+
+          <label>
+            Zip Code
+            <input 
+              name="zip_code"
+              id="zip_code"
+              type="text"
+              onChange={inputChangeHandler}
+              value={submittedMountain.zip_code}
               />
           </label>
 
