@@ -4,15 +4,9 @@ class OpenWeather
     @mountain_zip = zip_code
   end
   
-  def format_weather_api_response
-    parsed_weather = parse_weather_api_response
-
-    if parsed_weather["cod"] === "404"
-      return {
-        code: parsed_weather["cod"],
-        message: parsed_weather["message"]
-      }
-    else
+  def format_api_weather_response
+    parsed_weather = parse_api_weather_response
+    binding.pry
       return {
         conditions: parsed_weather["weather"][0]["main"],
         icon: parsed_weather["weather"][0]["icon"],
@@ -23,23 +17,22 @@ class OpenWeather
         description: parsed_weather["weather"][0]["description"],
         wind: parsed_weather["wind"]["speed"]
       }
-    end
   end
 
   private
 
-  def fetch_weather_by_zip
+  def fetch_weather
     domain = "https://api.openweathermap.org/data/2.5/"
     query = "weather?zip=#{@mountain_zip}&appid=#{ENV["OPEN_WEATHER_KEY"]}"
     url = domain + query
 
-    weather_api_response = Faraday.get(url)
+    api_weather_response = Faraday.get(url)
 
-    return weather_api_response
+    return api_weather_response
   end
 
-  def parse_weather_api_response
-    weather_response_body = fetch_weather_by_zip.body
+  def parse_api_weather_response
+    weather_response_body = fetch_weather.body
     parsed_weather_json = JSON.parse(weather_response_body)
 
     return parsed_weather_json

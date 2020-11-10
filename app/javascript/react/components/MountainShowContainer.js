@@ -116,27 +116,35 @@ const MountainShowContainer = (props) => {
         location={mountain.location}
         size={mountain.size}
         description={mountain.description}
+        zip_code={mountain.zip_code}
         mountain_picture={mountain.mountain_picture}
       />
 
-      <h2>Plan Ski Trips!</h2>
-      <Calendar
-      /> 
-       <div className='weather'>
-          < OpenWeatherTile
-            key={mountain.id}
-            weather={weather}
-          />
+      <h2 className="plan">Plan Ski Trips!</h2>
+      
+      <div className="calendar"> 
+        <Calendar
+        /> 
+      </div>
+      
+      <div className='weather'>
+        < OpenWeatherTile
+        key={mountain.id}
+        weather={weather}
+        />
         </div>
-      <h2 className="comment-label-header">Comments:</h2>
-      <CommentList
+        
+        <h2 className="comment-label-header">Comments:</h2>
+        
+        <CommentList
         mountainComments={comments}
-      />
-      <CommentErrorList errors={errors} 
-      error={error}/>
-      <CommentForm addNewCommentFunction={addNewComment} />
-    </div>
-  )
-}
+        />
+
+        <CommentErrorList errors={errors} 
+        error={error}/>
+        <CommentForm addNewCommentFunction={addNewComment} />
+      </div>
+      )
+    }
 
 export default MountainShowContainer 
