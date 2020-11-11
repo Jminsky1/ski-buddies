@@ -40,7 +40,7 @@ const MountainShowContainer = (props) => {
       })
       .then((responseBody) => {
         debugger
-        setMountain(responseBody.mountain)
+        setMountain(responseBody)
         setComments(responseBody.comments)
         setWeather({
           name: responseBody.name,
@@ -51,7 +51,9 @@ const MountainShowContainer = (props) => {
           highTemp:responseBody.weather.high,
           lowTemp: responseBody.weather.low,
           wind: responseBody.weather.wind,
-          date: responseBody.weather.date
+          date: responseBody.weather.date,
+          visibility: responseBody.weather.visibility,
+          snow: responseBody.weather.snow
         })
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`))

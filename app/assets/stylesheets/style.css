@@ -103,7 +103,7 @@ h2.small{
 
 h2{
   font-family: 'Raleway', sans-serif;
-  color: blue
+  color: white
 }
 
 img.picture{
@@ -140,6 +140,7 @@ form.new-comment-form{
 }
 
 .plan{
+  margin-right: 100px;
   text-align: center;
 }
 

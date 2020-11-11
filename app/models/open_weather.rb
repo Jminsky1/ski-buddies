@@ -6,7 +6,7 @@ class OpenWeather
   
   def format_api_weather_response
     parsed_weather = parse_api_weather_response
-    binding.pry
+
       return {
         conditions: parsed_weather["weather"][0]["main"],
         icon: parsed_weather["weather"][0]["icon"],
@@ -15,7 +15,9 @@ class OpenWeather
         high: parsed_weather["main"]["temp_max"],
         date: Time.at(parsed_weather["dt"]).strftime("%a %b %d"),
         description: parsed_weather["weather"][0]["description"],
-        wind: parsed_weather["wind"]["speed"]
+        wind: parsed_weather["wind"]["speed"],
+        visibility: parsed_weather["visibility"],
+        snow: parsed_weather["snow"]
       }
   end
 
