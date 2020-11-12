@@ -25,6 +25,21 @@ class Api::V1::MountainsController < ApiController
     # }
   end
 
+  # def favorite
+  #   type = params[:type]
+  #   if type == "favorite"
+  #     current_user.favorites << @mountain
+  #     redirect_to :back, notice: 'You favorited #{@mountain.name}'
+
+  #   elsif type == "unfavorite"
+  #     current_user.favorites.delete(@mountain)
+  #     redirect_to :back, notice: 'Unfavorited #{@mountain.name}'
+
+  #   else
+  #     redirect_to :back, notice: 'Nothing happened'
+  #   end
+  # end
+
 
   private
     def mountain_params

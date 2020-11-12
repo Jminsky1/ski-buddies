@@ -8,11 +8,13 @@ const OpenWeatherTile = (props) => {
       <ul>
         <li className='weather'><img src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`} /></li>
         <li className='weather'>Conditions: {props.weather.conditions}</li>
-        <li className='weather'>Current Temperature: {Math.round(props.weather.currentTemp)}&deg;F</li>
-        <li className='weather'>High Temperature: {Math.round(props.weather.highTemp)}&deg;F</li>
-        <li className='weather'>Low Temperature: {Math.round(props.weather.lowTemp)}&deg;F</li>
+        <li className='weather'>description: {props.weather.description}</li>
+        <li className='weather'>Current Temperature: {Math.round((props.weather.currentTemp- 273.15) * 9/5 + 32)}&deg;F</li>
+        <li className='weather'>High Temperature: {Math.round((props.weather.highTemp - 273.15) * 9/5 + 32)}&deg;F</li>
+        <li className='weather'>Low Temperature: {Math.round((props.weather.lowTemp - 273.15) * 9/5 + 32)}&deg;F</li>
         <li className='weather'>Wind: {Math.round(props.weather.wind)}mph</li>
-        
+        <li className='weather'>Visibility: {props.weather.visibility}</li>
+        <li className='weather'>Precipitation: {props.weather.snow} </li> 
       </ul>
     </div>
   )
