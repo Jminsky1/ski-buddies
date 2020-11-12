@@ -8,8 +8,9 @@ const CommentList = (props) => {
       return ( <CommentTile
         key={comment.id}
         id={comment.id}
-        body={comment.body}
-        gnar={comment.gnar}
+        comment={comment}
+        editComment={props.editComment}
+        deleteComment={props.deleteComment}
       />
       )
     })

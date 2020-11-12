@@ -12,6 +12,7 @@ const MountainShowContainer = (props) => {
   const [errors, setErrors] = useState({})
   const [error, setError] = useState(null)
   const [comments, setComments] = useState(null)
+  const [currentUser, setCurrentUser] = useState({})
   const [weather, setWeather] = useState({
     name: '',
     description: '',
@@ -29,7 +30,7 @@ const MountainShowContainer = (props) => {
     fetch(`/api/v1/mountains/${id}`, {
       credentials: "same-origin"
     })
-      .then((response) => {
+    .then((response) => {
       if (response.ok) {
         return response.json();
       } else {
@@ -37,26 +38,28 @@ const MountainShowContainer = (props) => {
         error = new Error(errorMessage);
         throw(error);
       }
+    })
+    .then((responseBody) => {
+      setMountain(responseBody)
+      setComments(responseBody.comments)
+      if (responseBody.currentUser != null) {
+        setCurrentUser(responseBody.currentUser)
+      }
+      setWeather({
+        name: responseBody.name,
+        description: responseBody.weather.description,
+        icon: responseBody.weather.icon,
+        conditions: responseBody.weather.conditions,
+        currentTemp: responseBody.weather.temp,
+        highTemp:responseBody.weather.high,
+        lowTemp: responseBody.weather.low,
+        wind: responseBody.weather.wind,
+        date: responseBody.weather.date,
+        visibility: responseBody.weather.visibility,
+        snow: responseBody.weather.snow
       })
-      .then((responseBody) => {
-        debugger
-        setMountain(responseBody)
-        setComments(responseBody.comments)
-        setWeather({
-          name: responseBody.name,
-          description: responseBody.weather.description,
-          icon: responseBody.weather.icon,
-          conditions: responseBody.weather.conditions,
-          currentTemp: responseBody.weather.temp,
-          highTemp:responseBody.weather.high,
-          lowTemp: responseBody.weather.low,
-          wind: responseBody.weather.wind,
-          date: responseBody.weather.date,
-          visibility: responseBody.weather.visibility,
-          snow: responseBody.weather.snow
-        })
-      })
-      .catch((error) => console.error(`Error in fetch: ${error.message}`))
+    })
+    .catch((error) => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
   const validforSubmission = (submittedComment) => {
@@ -73,6 +76,7 @@ const MountainShowContainer = (props) => {
     setErrors(submittedErrors)
     return _.isEmpty(submittedErrors)
   }
+
   const addNewComment = (newCommentObject) => {
     event.preventDefault() 
     if (validforSubmission(newCommentObject)) {
@@ -87,6 +91,7 @@ const MountainShowContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
+        debugger
         if (body.errors) {
           const requiredFields = ["body"]
           requiredFields.forEach(field => { 
@@ -109,6 +114,81 @@ const MountainShowContainer = (props) => {
       .catch(error => console.error(`Error in fetch: ${error.message}`))
     }
   }
+
+  const editComment = (commentObject) => {
+    const commentId = commentObject.commentId
+    debugger
+    fetch(`/api/v1/mountains/${id}/comments/${commentId}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(commentObject),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then((updatedComment) => {
+      if (!updatedComment.errors) {
+        let commentIndex = comments.findIndex((comment) => 
+        
+        comment.id === updatedComment.id
+        );
+
+        let tempComments = [...comments];
+        tempComment.splice(commentIndex, 1, updatedComment);
+        setComments(tempComments);
+
+      } else if (updatedComment.errors) {
+        setErrors(updatedComment.errors);
+      }
+    })
+    .catch((error) => console.error(`Error in fetch: ${error.message}`));
+  };
+
+  const deleteComment = (payload) => {
+    const commentId = payload.commentId
+
+    fetch(`/api/v1/mountains/${id}/comments/${commentId}`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then((removeComment) => {
+      if (!removeComment.errors) {
+        let commentIndex = comments.findIndex(
+          (comment) => comment.id === removeComment.id
+        );
+        let tempComments = [...comments];
+        tempComments.splice(commentIndex, 1);
+        setComments(tempComments);
+
+      } else if (removeComment.errors) {
+        setErrors(removeComment.errors);
+      }
+    })
+    .catch((error) => console.error(`Error in fetch: ${error.message}`));
+  };
   
   return (
     <div>
@@ -140,6 +220,9 @@ const MountainShowContainer = (props) => {
         
         <CommentList
         mountainComments={comments}
+        currentUser={currentUser}
+        editComment={editComment}
+        deleteComment={deleteComment}
         />
 
         <CommentErrorList errors={errors} 

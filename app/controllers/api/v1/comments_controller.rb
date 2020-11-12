@@ -18,6 +18,27 @@ class Api::V1::CommentsController < ApiController
     end
   end
 
+  def update
+    comment = Comment.find(params[:id])
+    mountain = comment.mountain
+    if comment.update(comment_params)
+        render json: mountain.comments
+    else
+        render json: { errors: comment.errors.full_messages }
+    end
+  end    
+  
+  # def edit
+  #   render json: Comment.find(params[:id]), serializer: CommentUpdateSerializer
+  # end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.destroy
+      render json: {destroyed: true}
+    end
+  end
+
   private
   
   def comment_params
@@ -30,3 +51,4 @@ class Api::V1::CommentsController < ApiController
     end
   end
 end
+

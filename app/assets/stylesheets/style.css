@@ -4,6 +4,13 @@
 body{
   background-color: transparent;
 }
+
+div.callout.secondary.cell.small-4{
+  background-color: transparent;
+  border: solid;
+  border-color: white;
+  padding: 50px;
+}
 nav.top-bar{
   background-color:blue;
 }
@@ -11,19 +18,16 @@ a {
  font-family: 'Raleway', sans-serif;
  color: white;
 }
-a:hover {
- font-family: 'Raleway', sans-serif;
- color: white;
-}
-a:visited {
+
+link {
  font-family: 'Raleway', sans-serif;
  color: white;
 }
 
-link {
-  font-family: 'Raleway', sans-serif;
- color: white;
+a:hover{
+  color: yellow
 }
+
 
 .top-bar-section{
  background-color: blue;
@@ -42,14 +46,15 @@ div.body-container{
 div.tile{
   background-color: transparent;
 }
+
 h2.field{
  font-family: 'Raleway', sans-serif;
- color: blue;
+ color: white;
  margin-left: 80px;
 }
 h5.field{
  font-family: 'Raleway', sans-serif;
- color: blue;
+ color: white;
  margin-left: 80px;
 }
 
@@ -61,10 +66,12 @@ p.field{
 p.field{
   margin-left: 80px;
 }
+
 div.field label{
  font-family: 'Raleway', sans-serif;
  color: white;
 }
+
 div.field a{
  font-family: 'Raleway', sans-serif;
  color: white;
@@ -76,9 +83,14 @@ div.field a{
 
 .big{
   border-style: double;
-  margin-left: 425px;
+  margin-left: 600px;
   background-color: blue;
   font-size: 200%;
+}
+
+.big:hover{
+  color: yellow;
+  font-size: 5 rem;
 }
 
 h2.small{
@@ -90,12 +102,10 @@ h2.small{
 }
 
 .title{
-  font-family: 'Raleway', sans-serif;
+ font-family: 'Raleway', sans-serif;
  color: white;
  background-color: transparent
 }
-
-
 
 .header{
   font-family: 'Raleway', sans-serif;
@@ -106,8 +116,12 @@ h2{
   color: white
 }
 
+h2.title{
+  font-family: 'Raleway', sans-serif;
+  color: white
+}
+
 img.picture{
-  background-color: blue;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -140,13 +154,23 @@ form.new-comment-form{
 }
 
 .plan{
-  margin-right: 100px;
+  margin-right: 150px;
   text-align: center;
 }
 
 div.weather{
   background-color: transparent;
+  color: white;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 450px;
   width: 50%;
   padding: 10px;}
+
+  div.callout.weather-container{
+    background-color: transparent;
+    color: white;
+  }
+
+  h1{
+    color: black;
+  }
