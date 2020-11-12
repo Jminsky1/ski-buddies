@@ -6,7 +6,6 @@ class OpenWeather
   
   def format_api_weather_response
     parsed_weather = parse_api_weather_response
-
       return {
         conditions: parsed_weather["weather"][0]["main"],
         icon: parsed_weather["weather"][0]["icon"],
@@ -17,7 +16,7 @@ class OpenWeather
         description: parsed_weather["weather"][0]["description"],
         wind: parsed_weather["wind"]["speed"],
         visibility: parsed_weather["visibility"],
-        snow: parsed_weather["snow"]
+        # snow: parsed_weather["snow"]["3h"]
       }
   end
 
