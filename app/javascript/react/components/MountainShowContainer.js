@@ -91,7 +91,6 @@ const MountainShowContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         if (body.errors) {
           const requiredFields = ["body"]
           requiredFields.forEach(field => { 
@@ -189,7 +188,32 @@ const MountainShowContainer = (props) => {
     })
     .catch((error) => console.error(`Error in fetch: ${error.message}`));
   };
-  
+
+  const addFavorite = (formData) => {
+    fetch('/api/v1/favorites', {
+      method: 'POST', 
+      body: JSON.stringify(mountain),
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body=> {
+    })
+    .catch(error=> console.error('Error in fetch: ${error.message}'))
+  }
+
   return (
     <div>
       <MountainShow
@@ -200,6 +224,7 @@ const MountainShowContainer = (props) => {
         description={mountain.description}
         zip_code={mountain.zip_code}
         mountain_picture={mountain.mountain_picture}
+        addFavorite={addFavorite}
       />
 
       <h2 className="plan">Plan Ski Trips!</h2>

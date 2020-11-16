@@ -7,6 +7,8 @@ const MountainShow = (props) => {
       picture = <img className="padded" src={props.mountain_picture.url} alt="mountain picture" />
     }
   }
+     
+  
   return(
    
     <div className="tile">
@@ -19,6 +21,9 @@ const MountainShow = (props) => {
         </div>
         <div className="small-6 columns">
           {picture}
+        </div>
+        <div>
+          <input onClick={props.addFavorite} className="button" type="submit" value="Add to Favorites"/>
         </div>
       </div>
     </div>

@@ -154,8 +154,7 @@ form.new-comment-form{
 }
 
 .plan{
-  margin-right: 150px;
-  text-align: center;
+  margin-left: 550px
 }
 
 div.weather{
@@ -169,6 +168,7 @@ div.weather{
   div.callout.weather-container{
     background-color: transparent;
     color: white;
+    margin-left: 150px
   }
 
   h1{
