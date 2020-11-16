@@ -83,7 +83,7 @@ div.field a{
 
 .big{
   border-style: double;
-  margin-left: 600px;
+  margin-left: 560px;
   background-color: blue;
   font-size: 200%;
 }
@@ -140,6 +140,9 @@ ul.right{
 
 form.new-comment-form{
   background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  border-width: 10px
 }
 
 .clear{
@@ -161,16 +164,20 @@ div.weather{
   background-color: transparent;
   color: white;
   margin-left: auto;
-  margin-right: 450px;
+  margin-right: 400px;
   width: 50%;
   padding: 10px;}
 
   div.callout.weather-container{
-    background-color: transparent;
+    background-color: gray;
     color: white;
-    margin-left: 150px
+    margin-left: 100px
   }
 
   h1{
-    color: black;
+    color: white;
+  }
+
+  label.comment-label{
+    padding: 0px
   }

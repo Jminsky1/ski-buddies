@@ -1,5 +1,5 @@
 class MountainShowSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :size, :mountain_picture, :weather
+  attributes :id, :name, :location, :size, :mountain_picture, :description, :weather
 
   has_many :comments
 

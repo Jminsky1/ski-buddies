@@ -16,8 +16,8 @@ const MountainShow = (props) => {
         <div className = "small-6 columns">
           <h2 className="field">{props.name}</h2>
           <h5 className="field">{props.location} </h5>
-          <h5 className="field">Elevation:{props.size} </h5>
-          <p className="field">{props.description} </p>
+          <h5 className="field">Elevation (feet):{props.size} </h5>
+          <h5 className="field"> {props.description} </h5>
         </div>
         <div className="small-6 columns">
           {picture}

@@ -103,7 +103,7 @@ const MountainsFormContainer = (props) => {
   return(
     <div>
       <div>
-        <p className="callout secondary cell small-6">To add a new mountain please enter name, location, and elevation!</p>
+        <p className="callout secondary cell small-6">To add a new mountain please enter name, location, zip code and elevation!</p>
       </div>
       
       <div className="field">
@@ -145,7 +145,7 @@ const MountainsFormContainer = (props) => {
           </label>
 
           <label>
-            Elevation  
+            Elevation (in feet)  
             <input 
               name="size"
               id="size"
