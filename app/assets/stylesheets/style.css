@@ -166,11 +166,11 @@ div.weather{
   padding: 10px;}
 
   div.callout.weather-container{
-    background-color: transparent;
+    background-color: gray;
     color: white;
     margin-left: 150px
   }
 
   h1{
-    color: black;
+    color: white;
   }
